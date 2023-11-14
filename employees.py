@@ -35,6 +35,7 @@ class CommissionEmployee(SalaryEmployee):
 
 
 
+
 class Manager(SalaryEmployee):
     def work(self, hours):
         print(f'{self.name} screams and yells for {hours} hours.')
@@ -50,3 +51,10 @@ class SalesPerson(CommissionEmployee):
 class FactoryWorker(HourlyEmployee):
     def work(self, hours):
         print(f'{self.name} manufactures gadgets for {hours} hours.')
+
+class TemporarySecretary(Secretary, HourlyEmployee):
+    def __init__(self, id, name, hours_worked, hour_rate):
+        HourlyEmployee.__init__(self, id, name, hours_worked, hour_rate)
+
+    def calculate_payroll(self):
+        return HourlyEmployee.calculate_payroll(self)
