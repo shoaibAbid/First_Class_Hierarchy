@@ -1,42 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
+Certainly! Here's a concise README file for the branch addressing the diamond problem:
 
-<body>
+```markdown
+# Solving the Diamond Problem in Python
 
-  <h1>Class Explosion Problem and Productivity System</h1>
+## Diamond Problem Overview
 
-  <p>In software development, the class explosion problem can arise when inheritance leads to a complex and hard-to-maintain hierarchical structure. This issue becomes evident when adding new functionalities, as seen in this project.</p>
+Addressing the diamond problem in a class hierarchy involving `TemporarySecretary` class.
 
-  <h2>Moving to an Employees Module</h2>
+### Class Hierarchy
 
-  <p>To address the evolving requirements, the classes related to employees have been moved to a dedicated <code>employees</code> module. This module now includes various employee types, each designed to work with both the <code>PayrollSystem</code> and the newly introduced <code>ProductivitySystem</code>.</p>
+![Diamond Problem](https://files.realpython.com/media/ic-diamond-problem.8e685f12d3c2.jpg)
 
-  <h3>New Employee Types</h3>
+### Output Screenshot
 
-  <p>The employee module now contains additional employee types:</p>
+![Output Screenshot](Capture4.PNG)
 
-  <ul>
-    <li><code>Manager</code>: Salaried employees who manage and lead.</li>
-    <li><code>Secretary</code>: Salaried employees handling administrative tasks.</li>
-    <li><code>SalesPerson</code>: Employees with a base salary and commissions for sales.</li>
-    <li><code>FactoryWorker</code>: Hourly employees working in manufacturing.</li>
-  </ul>
+## Changes Made
 
-  <p>Each employee type implements a <code>work()</code> method to support productivity tracking.</p>
+Introduced the `TemporarySecretary` class, demonstrating the diamond problem in multiple inheritance and providing a solution through explicit method invocation.
 
-  <h3>New Productivity System</h3>
+### Example Usage
 
-  <p>The <code>ProductivitySystem</code> class is introduced to track employee productivity based on their roles. The system works by calling the <code>work()</code> method for each employee, taking into account the number of hours worked.</p>
+```python
+import hr
+import employees
+import productivity
 
-  <h2>New Class Hierarchy</h2>
+# ... (rest of the program setup)
 
- <img src="https://files.realpython.com/media/ic-class-explosion.a3d42b8c9b91.jpg" alt="Class Hierarchy">
+temporary_secretary = employees.TemporarySecretary(5, 'Robin Williams', 40, 9)
+company_employees = [
+    manager,
+    secretary,
+    sales_guy,
+    factory_worker,
+    temporary_secretary,
+]
 
+# ... (rest of the program execution)
+```
 
-  <h2>Output Results</h2>
+## Diamond Problem Resolution
 
-  <img src="Capture3.PNG" alt="Output Screenshot">
+Resolved the diamond problem by managing the order of inheritance and explicitly invoking methods.
 
-</body>
+### Code Snippet
 
-</html>
+```python
+class TemporarySecretary(Secretary, HourlyEmployee):
+    def __init__(self, id, name, hours_worked, hour_rate):
+        HourlyEmployee.__init__(self, id, name, hours_worked, hour_rate)
+
+    def calculate_payroll(self):
+        return HourlyEmployee.calculate_payroll(self)
+```
+
+## Run the Program
+
+Ensure Python is installed, then run:
+
+```bash
+python program.py
+```
+
+## Additional Resources
+
+- [Understanding Python's Method Resolution Order (MRO)](https://realpython.com/python-method-resolution-order/)
+- [Diamond Problem in Object-Oriented Design](https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem)
+
+Feel free to explore and experiment with the code.
+```
+
+Replace `<LINK_TO_CLASS_HIERARCHY_IMAGE>` with the actual URL where you can find the class hierarchy image.
