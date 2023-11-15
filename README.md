@@ -5,7 +5,9 @@
 
   <h1>Employee Payroll System</h1>
 
-  <p>This project has five branches to implement different functionalities: 1.Main, 2.Diamond problem solution 3.Class Explosion Problem, 4.Abstract base class. This project serves as an illustrative example of class hierarchies in Python, showcasing the implementation of an HR system designed for payroll processing. The system employs the concept of inheritance to model different types of employees.</p>
+  <p>This project has five branches to implement different functionalities: 1. Main, 2. Abstract base class 3. Diamond Problem, 4. Class Explosion 5. Multiple Inheritance 
+    
+   This project serves as an illustrative example of class hierarchies in Python, showcasing the implementation of an HR system designed for payroll processing. The system employs the concept of inheritance to model different types of employees.</p>
 
   <h2>Class Hierarchy</h2>
 
