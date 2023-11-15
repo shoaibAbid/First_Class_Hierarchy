@@ -1,47 +1,27 @@
-# Solving the Diamond Problem in Python
+# Refactoring for Modularity
 
-Diamond Problem Overview
+## Overview
 
-Addressing the diamond problem in a class hierarchy involving TemporarySecretary class.
+This branch addresses the diamond problem by refactoring the class hierarchy to improve modularity. The Employee derived classes are now designed to work seamlessly with two different systems: the productivity system and the payroll system.
 
+## Changes Made
 
-<img src="https://files.realpython.com/media/ic-diamond-problem.8e685f12d3c2.jpg" alt="Class Hierarchy">
+- Moved productivity-related classes to the `productivity` module.
+- Moved payroll-related classes to the `hr` module.
+- Introduced role and policy classes to avoid diamond problem complexities.
+- Updated the `employees` module to utilize the new modular structure.
 
+## Class Hierarchy
 
-![Output Screenshot](Capture4.PNG)
+[![Class Hierarchy](https://files.realpython.com/media/ic-inheritance-policies.0a0de2d42a25.jpg)](https://files.realpython.com/media/ic-inheritance-policies.0a0de2d42a25.jpg)
 
+## Output Screenshot
 
+![Output Screenshot](Capture6.PNG)
 
-
-
-
-
-## Diamond Problem Resolution
-
-
-Resolved the diamond problem by managing the order of inheritance and explicitly invoking methods.
-
-### Code Snippet
-
-```python
-class TemporarySecretary(Secretary, HourlyEmployee):
-    def __init__(self, id, name, hours_worked, hour_rate):
-        HourlyEmployee.__init__(self, id, name, hours_worked, hour_rate)
-
-    def calculate_payroll(self):
-        return HourlyEmployee.calculate_payroll(self)
-```
-
-## Run the Program
+## Usage
 
 Ensure Python is installed, then run:
 
 ```bash
 python program.py
-```
-
-## Additional Resources
-
-- [Understanding Python's Method Resolution Order (MRO)](https://realpython.com/python-method-resolution-order/)
-- [Diamond Problem in Object-Oriented Design](https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem)
-
